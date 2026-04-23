@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ceylin'e Özel Aşk Kavanozu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #d63031;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        /* Kavanoz Tasarımı */
+        .jar-wrapper {
+            position: relative;
+            cursor: pointer;
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+
+        .jar-wrapper:hover {
+            transform: scale(1.05);
+        }
+
+        .lid {
+            width: 120px;
+            height: 30px;
+            background: #d35400;
+            border-radius: 5px;
+            margin: 0 auto;
+            border: 2px solid #a04000;
+            box-shadow: inset 0 5px 10px rgba(255,255,255,0.3);
+        }
+
+        .neck {
+            width: 100px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.4);
+            margin: 0 auto;
+            border-left: 2px solid rgba(255,255,255,0.8);
+            border-right: 2px solid rgba(255,255,255,0.8);
+        }
+
+        .glass {
+            width: 160px;
+            height: 180px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 40px 40px 20px 20px;
+            border: 2px solid rgba(255,255,255,0.8);
+            box-shadow: inset -10px 0 20px rgba(0,0,0,0.05),
+                        inset 10px 0 20px rgba(255,255,255,0.8),
+                        0 15px 25px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* İçindeki sembolik kağıtlar */
+        .glass::after {
+            content: '💌 💖 💌';
+            font-size: 2rem;
+            position: absolute;
+            bottom: 20px;
+            opacity: 0.8;
+            letter-spacing: 5px;
+        }
+
+        .label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Dancing Script', cursive;
+            color: #c0392b;
+            font-size: 1.5rem;
+            background: rgba(255,255,255,0.8);
+            padding: 5px 15px;
+            border-radius: 10px;
+            border: 1px dashed #c0392b;
+        }
+
+        /* Açılan Kağıt Tasarımı */
+        .paper {
+            position: absolute;
+            bottom: 100px;
+            width: 250px;
+            min-height: 150px;
+            background: #fff8e7;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            opacity: 0;
+            transform: scale(0.1) translateY(100px);
+            pointer-events: none;
+            border: 1px solid #e8d0a9;
+        }
+
+        .paper::before {
+            content: 'Sevgili Ceylin,';
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-family: 'Dancing Script', cursive;
+            color: #c0392b;
+            font-size: 1.3rem;
+        }
+
+        #message-text {
+            margin-top: 25px;
+            line-height: 1.5;
+        }
+
+        /* Animasyonlar */
+        .shake {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(10deg); }
+            50% { transform: rotate(-10deg); }
+            75% { transform: rotate(5deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .pop-out {
+            animation: popOut 1s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popOut {
+            0% { opacity: 0; transform: scale(0.1) translateY(100px); }
+            50% { opacity: 1; transform: scale(1.1) translateY(-180px); }
+            100% { opacity: 1; transform: scale(1) translateY(-150px); }
+        }
+
+        .instruction {
+            margin-top: 40px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Senin İçin...</h1>
+
+    <div class="container">
+        <div class="paper" id="paper">
+            <p id="message-text"></p>
+        </div>
+
+        <div class="jar-wrapper" id="jar" onclick="openJar()">
+            <div class="lid"></div>
+            <div class="neck"></div>
+            <div class="glass">
+                <div class="label">Aşk Kavanozu</div>
+            </div>
+        </div>
+    </div>
+
+    <p class="instruction">İçinden bir mesaj çekmek için kavanoza tıkla</p>
+
+    <script>
+        const messages = [
+            "Seni seviyorum çünkü sen her halinle çok tatlısın.",
+            "Seni seviyorum çünkü sen benim için bir sevgiliden öte; çocuklarımın annesi ve benim eşim olacaksın.",
+            "Seni seviyorum çünkü seninleyken kendimi dünyanın en şanslı insanı gibi hissediyorum.",
+            "Seni seviyorum çünkü sadece sesini duymak bile en kötü günümü bir anda güzelleştirebiliyor.",
+            "Seni seviyorum çünkü o içten gülüşün dünyadaki en sevdiğim manzara.",
+            "Seni seviyorum çünkü senin yanında en savunmasız halimle bile kendimi güvende hissediyorum.",
+            "Seni seviyorum çünkü bana 'biz' olmanın ne kadar kıymetli bir şey olduğunu öğrettin.",
+            "Seni seviyorum çünkü kurduğum tüm gelecek hayallerimin başrolünde her zaman sen varsın.",
+            "Seni seviyorum çünkü senin kalbinin güzelliği, yüzüne yansıyan o eşsiz ışıkta gizli.",
+            "Seni seviyorum çünkü uykulu ses tonun bile bana huzur veriyor.",
+            "Seni seviyorum çünkü beni ben olduğum için, tüm kusurlarımla birlikte sevdiğini biliyorum.",
+            "Seni seviyorum çünkü seninle geçen her saniye, hayatımın en değerli anısı haline geliyor.",
+            "Seni seviyorum çünkü bana bakarken gözlerinde gördüğüm o şefkati başka hiçbir yerde bulamam.",
+            "Seni seviyorum çünkü hayatın karmaşası içinde benim sığınağımsın.",
+            "Seni seviyorum çünkü her 'hoşça kal' dediğimizde, bir sonraki görüşmeyi iple çekmemi sağlıyorsun.",
+            "Seni seviyorum çünkü sen sadece sevgilim değil, benim en güzel hikayemsin.",
+            "Seni seviyorum çünkü seninle her gün, yeniden aşık olmak için yeni bir sebep buluyorum.",
+            "Seni seviyorum çünkü iyi ki varsın ve iyi ki benimsin."
+        ];
+
+        let isAnimating = false;
+
+        function openJar() {
+            // Eğer halihazırda bir animasyon oynuyorsa tekrar tıklamayı engelle
+            if (isAnimating) return;
+            isAnimating = true;
+
+            const jar = document.getElementById('jar');
+            const paper = document.getElementById('paper');
+            const messageText = document.getElementById('message-text');
+
+            // Eğer kağıt zaten açıksa, önce onu gizle
+            paper.classList.remove('pop-out');
+            
+            // Kavanoza sallanma efekti ver
+            jar.classList.add('shake');
+
+            // Sallanma bittikten sonra
+            setTimeout(() => {
+                jar.classList.remove('shake');
+                
+                // Rastgele mesaj seç
+                const randomIndex = Math.floor(Math.random() * messages.length);
+                messageText.innerHTML = messages[randomIndex];
+
+                // Kağıdı fırlat
+                paper.classList.add('pop-out');
+                
+                // Animasyon kilidini aç
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 1000);
+
+            }, 500); // 0.5 saniye sallanma süresi
+        }
+    </script>
+</body>
+</html>
