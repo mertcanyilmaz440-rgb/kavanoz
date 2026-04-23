@@ -137,4 +137,189 @@
         .glass .paper-particles::after {
             content: '✉ ✉ ✉ ✉ ✉ ✉ ✉';
             font-size: 1.2rem;
-            color: rgba(243, 156, 18
+            color: rgba(243, 156, 18, 0.6); /* Hafif soluk turuncu/sarı tonu */
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120%;
+            letter-spacing: 15px;
+            filter: blur(0.5px);
+            animation: papersFloat 6s ease-in-out infinite;
+        }
+
+        /* Kağıtların hafifçe yüzme animasyonu */
+        @keyframes papersFloat {
+            0%, 100% { transform: translate(-50%, 0px); }
+            50% { transform: translate(-50%, -10px) rotate(2deg); }
+        }
+
+        .label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Dancing Script', cursive;
+            color: #c0392b;
+            font-size: 1.8rem; /* Biraz daha büyük */
+            background: rgba(255,255,255,0.9);
+            padding: 8px 20px;
+            border-radius: 12px;
+            border: 2px dashed #c0392b; /* Çizgi detayı daha belirgin */
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Açılan Kağıt Tasarımı */
+        .paper {
+            position: absolute;
+            bottom: 120px;
+            width: 280px;
+            min-height: 160px;
+            background: #fff8e7; /* Eskitilmiş kağıt tonu */
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            padding: 25px;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            opacity: 0;
+            transform: scale(0.1) translateY(120px);
+            pointer-events: none;
+            border: 2px solid #e8d0a9;
+        }
+
+        .paper::before {
+            content: 'Sevgili Ceylin,';
+            position: absolute;
+            top: 15px;
+            left: 25px;
+            font-family: 'Dancing Script', cursive;
+            color: #c0392b;
+            font-size: 1.4rem;
+        }
+
+        #message-text {
+            margin-top: 30px;
+            line-height: 1.6;
+            color: #4a4a4a;
+        }
+
+        /* Animasyonlar */
+        .shake {
+            animation: shake 0.6s ease-in-out;
+        }
+
+        @keyframes shake {
+            0% { transform: rotate(0deg) translateY(0); }
+            20% { transform: rotate(12deg) translateY(-5px); }
+            40% { transform: rotate(-12deg) translateY(-5px); }
+            60% { transform: rotate(8deg) translateY(-3px); }
+            80% { transform: rotate(-8deg) translateY(-3px); }
+            100% { transform: rotate(0deg) translateY(0); }
+        }
+
+        .pop-out {
+            animation: popOut 1.2s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popOut {
+            0% { opacity: 0; transform: scale(0.1) translateY(120px); }
+            60% { opacity: 1; transform: scale(1.1) translateY(-200px); }
+            100% { opacity: 1; transform: scale(1) translateY(-170px); }
+        }
+
+        .instruction {
+            margin-top: 50px;
+            color: #7f8c8d;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.7);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ceylin İçin...</h1>
+
+    <div class="container">
+        <div class="paper" id="paper">
+            <p id="message-text"></p>
+        </div>
+
+        <div class="jar-wrapper" id="jar" onclick="openJar()">
+            <div class="lid"></div>
+            <div class="neck"></div>
+            <div class="glass">
+                <div class="paper-particles"></div>
+                <div class="label">Aşk Kavanozu</div>
+            </div>
+        </div>
+    </div>
+
+    <p class="instruction">İçinden bir mesaj çekmek için kavanoza tıkla</p>
+
+    <script>
+        const messages = [
+            "Seni seviyorum çünkü sen her halinle çok tatlısın.",
+            "Seni seviyorum çünkü sen benim için bir sevgiliden öte; çocuklarımın annesi ve benim eşim olacaksın.",
+            "Seni seviyorum çünkü seninleyken kendimi dünyanın en şanslı insanı gibi hissediyorum.",
+            "Seni seviyorum çünkü sadece sesini duymak bile en kötü günümü bir anda güzelleştirebiliyor.",
+            "Seni seviyorum çünkü o içten gülüşün dünyadaki en sevdiğim manzara.",
+            "Seni seviyorum çünkü senin yanında en savunmasız halimle bile kendimi güvende hissediyorum.",
+            "Seni seviyorum çünkü bana 'biz' olmanın ne kadar kıymetli bir şey olduğunu öğrettin.",
+            "Seni seviyorum çünkü kurduğum tüm gelecek hayallerimin başrolünde her zaman sen varsın.",
+            "Seni seviyorum çünkü senin kalbinin güzelliği, yüzüne yansıyan o eşsiz ışıkta gizli.",
+            "Seni seviyorum çünkü uykulu ses tonun bile bana huzur veriyor.",
+            "Seni seviyorum çünkü beni ben olduğum için, tüm kusurlarımla birlikte sevdiğini biliyorum.",
+            "Seni seviyorum çünkü seninle geçen her saniye, hayatımın en değerli anısı haline geliyor.",
+            "Seni seviyorum çünkü bana bakarken gözlerinde gördüğüm o şefkati başka hiçbir yerde bulamam.",
+            "Seni seviyorum çünkü hayatın karmaşası içinde benim sığınağımsın.",
+            "Seni seviyorum çünkü her 'hoşça kal' dediğimizde, bir sonraki görüşmeyi iple çekmemi sağlıyorsun.",
+            "Seni seviyorum çünkü sen sadece sevgilim değil, benim en güzel hikayemsin.",
+            "Seni seviyorum çünkü seninle her gün, yeniden aşık olmak için yeni bir sebep buluyorum.",
+            "Seni seviyorum çünkü iyi ki varsın ve iyi ki benimsin."
+        ];
+
+        let isAnimating = false;
+
+        function openJar() {
+            // Eğer halihazırda bir animasyon oynuyorsa tekrar tıklamayı engelle
+            if (isAnimating) return;
+            isAnimating = true;
+
+            const jar = document.getElementById('jar');
+            const paper = document.getElementById('paper');
+            const messageText = document.getElementById('message-text');
+
+            // Eğer kağıt zaten açıksa, önce onu gizle
+            paper.classList.remove('pop-out');
+            
+            // Kavanoza sallanma efekti ver
+            jar.classList.add('shake');
+
+            // Sallanma bittikten sonra
+            setTimeout(() => {
+                jar.classList.remove('shake');
+                
+                // Rastgele mesaj seç
+                const randomIndex = Math.floor(Math.random() * messages.length);
+                messageText.innerHTML = messages[randomIndex];
+
+                // Kağıdı fırlat
+                paper.classList.add('pop-out');
+                
+                // Animasyon kilidini aç
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 1200); /* Kağıt çıkma animasyon süresi kadar */
+
+            }, 600); // 0.6 saniye sallanma süresi
+        }
+    </script>
+</body>
+</html>
