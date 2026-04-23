@@ -6,7 +6,6 @@
     <title>Ceylin'e Özel Aşk Kavanozu</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        /* 1. Belirgin Kalp Temalı Arka Plan */
         body {
             margin: 0;
             padding: 0;
@@ -15,24 +14,30 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #fdf2f0;
-            /* Kalp deseni CSS ile daha net oluşturuldu */
-            background-image: 
-                radial-gradient(circle at 20px 20px, rgba(231, 76, 60, 0.08) 2px, transparent 0),
-                radial-gradient(circle at 20px 20px, transparent 3px, rgba(231, 76, 60, 0.04) 4px, transparent 5px),
-                radial-gradient(circle at 12px 12px, rgba(231, 76, 60, 0.08) 2px, transparent 0);
-            background-size: 30px 30px, 30px 30px, 20px 20px;
-            background-position: 0 0, 0 0, 15px 15px;
+            /* Arka Plan: Senin gönderdiğin resim1.jpg */
+            background: url('resim1.jpg') center center;
+            background-size: cover;
             font-family: 'Poppins', sans-serif;
             overflow: hidden;
+            position: relative;
+        }
+
+        /* Arka planın çok koyu kalmaması için hafif bir katman */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
         }
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            color: #d63031;
+            color: #ffffff;
             font-size: 3.5rem;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            z-index: 1;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
         }
 
         .container {
@@ -42,187 +47,98 @@
             display: flex;
             justify-content: center;
             align-items: flex-end;
+            z-index: 1;
         }
 
-        /* 2. Geliştirilmiş, Gerçekçi Kavanoz Tasarımı */
+        /* Kavanoz: Senin gönderdiğin resim2.jpg */
         .jar-wrapper {
-            position: relative;
+            width: 280px;
+            height: 380px;
+            background: url('resim2.jpg') no-repeat center center;
+            background-size: contain;
             cursor: pointer;
+            position: relative;
             z-index: 10;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            /* Hafif ışıltı efekti */
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
         }
 
         .jar-wrapper:hover {
             transform: scale(1.05);
         }
 
-        /* Gerçekçi Mantar Kapak (Cork Lid) */
-        .cork-lid {
-            width: 140px;
-            height: 35px;
-            background-color: #c9a785; /* Mantar dokusu rengi */
-            background-image: 
-                radial-gradient(circle at 10px 10px, rgba(0,0,0,0.1) 1px, transparent 0),
-                radial-gradient(circle at 20px 20px, rgba(0,0,0,0.05) 1px, transparent 0);
-            background-size: 15px 15px;
-            border-radius: 5px;
-            margin: 0 auto;
-            border: 2px solid #a68461;
-            box-shadow: inset 0 5px 10px rgba(255,255,255,0.2), 0 5px 15px rgba(0,0,0,0.2);
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Cam Kavanoz Gövdesi (Geliştirilmiş Cam ve Yansımalar) */
-        .glass {
-            width: 230px;
-            height: 230px;
-            background: rgba(255, 255, 255, 0.05); /* Cam şeffaflığı */
-            border-radius: 50%; /* Tam yuvarlak */
-            border: 1px solid rgba(255,255,255,0.4);
-            /* Cam gibi görünmesini sağlayan daha derin gölgeler */
-            box-shadow: 
-                inset -20px 0 30px rgba(0,0,0,0.02), /* Sol gölge */
-                inset 20px 0 35px rgba(255,255,255,0.7), /* Sağ yansıma */
-                inset 0 -25px 25px rgba(0,0,0,0.01), /* Alt gölge */
-                0 25px 45px rgba(0,0,0,0.1); /* Dış gölge */
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1;
-        }
-
-        /* Cam yansıması detayı (Realistik Hafif Parlama) */
-        .glass::before {
-            content: '';
-            position: absolute;
-            top: 8%;
-            left: 8%;
-            width: 35%;
-            height: 60%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.6), transparent 70%);
-            border-radius: 50%;
-            filter: blur(5px); /* Işık parlaması */
-            transform: rotate(-10deg);
-        }
-
-        /* 3. İçindeki Pembe Kağıtlar (Temsili, Rulo Efektli) */
-        .glass .paper-particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        /* Camın içindeki kağıt rulolarını taklit etmek için karakterler */
-        .glass .paper-particles::after {
-            content: '✉ ✉ ✉ ✉ ✉ ✉ ✉ ✉ ✉';
-            font-size: 1.1rem;
-            color: rgba(231, 76, 60, 0.7); /* Pembe tonları */
-            position: absolute;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 140%;
-            letter-spacing: 12px;
-            filter: blur(0.5px);
-            animation: papersFloat 6s ease-in-out infinite;
-        }
-
-        /* Kağıtların hafifçe yüzme animasyonu */
-        @keyframes papersFloat {
-            0%, 100% { transform: translate(-50%, 0px); }
-            50% { transform: translate(-50%, -12px) rotate(3deg); }
-        }
-
-        /* Geliştirilmiş Etiket (Label) */
-        .label {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Dancing Script', cursive;
-            color: #c0392b;
-            font-size: 1.6rem;
-            background: rgba(255,255,255,0.9);
-            padding: 6px 18px;
-            border-radius: 12px;
-            border: 2px dashed #c0392b;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        }
-
-        /* Açılan Kağıt Tasarımı */
+        /* Mesaj Kağıdı */
         .paper {
             position: absolute;
-            bottom: 150px;
-            width: 290px;
-            min-height: 170px;
-            background: #fff8e7;
-            border-radius: 8px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            padding: 25px;
+            bottom: 200px;
+            width: 300px;
+            min-height: 180px;
+            background: #fffdf5;
+            border-radius: 5px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            padding: 30px;
             text-align: center;
-            font-size: 1.1rem;
-            color: #2c3e50;
+            font-size: 1.2rem;
+            color: #333;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 5;
             opacity: 0;
-            transform: scale(0.1) translateY(120px);
+            transform: scale(0.1) translateY(150px);
             pointer-events: none;
-            border: 2px solid #e8d0a9;
+            border: 1px solid #ddd;
         }
 
         .paper::before {
-            content: 'Sevgili Ceylin,';
+            content: 'Ceylin için bir not...';
             position: absolute;
             top: 15px;
-            left: 25px;
+            left: 20px;
             font-family: 'Dancing Script', cursive;
-            color: #c0392b;
+            color: #d63031;
             font-size: 1.3rem;
         }
 
         #message-text {
-            margin-top: 35px;
             line-height: 1.6;
-            color: #4a4a4a;
+            font-weight: 400;
         }
 
-        /* Animasyonlar (Sallanma ve Çıkma) */
+        /* Animasyonlar */
         .shake {
-            animation: shake 0.6s ease-in-out;
+            animation: jarShake 0.6s ease-in-out;
         }
 
-        @keyframes shake {
-            0% { transform: rotate(0deg) translateY(0); }
-            20% { transform: rotate(12deg) translateY(-5px); }
-            40% { transform: rotate(-12deg) translateY(-5px); }
-            60% { transform: rotate(8deg) translateY(-3px); }
-            80% { transform: rotate(-8deg) translateY(-3px); }
-            100% { transform: rotate(0deg) translateY(0); }
+        @keyframes jarShake {
+            0% { transform: rotate(0); }
+            20% { transform: rotate(8deg); }
+            40% { transform: rotate(-8deg); }
+            60% { transform: rotate(5deg); }
+            80% { transform: rotate(-5deg); }
+            100% { transform: rotate(0); }
         }
 
         .pop-out {
-            animation: popOut 1.2s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: paperPop 1.2s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        @keyframes popOut {
-            0% { opacity: 0; transform: scale(0.1) translateY(120px); }
-            60% { opacity: 1; transform: scale(1.1) translateY(-200px); }
+        @keyframes paperPop {
+            0% { opacity: 0; transform: scale(0.1) translateY(150px); }
+            60% { opacity: 1; transform: scale(1.1) translateY(-220px); }
             100% { opacity: 1; transform: scale(1) translateY(-180px); }
         }
 
         .instruction {
-            margin-top: 60px;
-            color: #7f8c8d;
-            font-size: 1.1rem;
-            background: rgba(255,255,255,0.7);
-            padding: 6px 20px;
-            border-radius: 20px;
+            margin-top: 40px;
+            color: #eee;
+            font-size: 1rem;
+            z-index: 1;
+            background: rgba(0,0,0,0.4);
+            padding: 8px 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
         }
     </style>
 </head>
@@ -235,19 +151,12 @@
             <p id="message-text"></p>
         </div>
 
-        <div class="jar-wrapper" id="jar" onclick="openJar()">
-            <div class="cork-lid"></div>
-            <div class="glass">
-                <div class="paper-particles"></div>
-                <div class="label">Aşk Kavanozu</div>
-            </div>
-        </div>
+        <div class="jar-wrapper" id="jar" onclick="openJar()"></div>
     </div>
 
-    <p class="instruction">İçinden bir mesaj çekmek için kavanoza tıkla</p>
+    <p class="instruction">Mesaj çekmek için kavanoza dokun</p>
 
     <script>
-        // Mesaj listesi (korundu)
         const messages = [
             "Seni seviyorum çünkü sen her halinle çok tatlısın.",
             "Seni seviyorum çünkü sen benim için bir sevgiliden öte; çocuklarımın annesi ve benim eşim olacaksın.",
@@ -272,7 +181,6 @@
         let isAnimating = false;
 
         function openJar() {
-            // Animasyon kontrolü
             if (isAnimating) return;
             isAnimating = true;
 
@@ -280,29 +188,21 @@
             const paper = document.getElementById('paper');
             const messageText = document.getElementById('message-text');
 
-            // Eğer kağıt zaten açıksa, önce onu gizle
             paper.classList.remove('pop-out');
-            
-            // Kavanoza sallanma efekti ver
             jar.classList.add('shake');
 
-            // Sallanma bittikten sonra
             setTimeout(() => {
                 jar.classList.remove('shake');
                 
-                // Rastgele mesaj seç
                 const randomIndex = Math.floor(Math.random() * messages.length);
                 messageText.innerHTML = messages[randomIndex];
 
-                // Kağıdı fırlat
                 paper.classList.add('pop-out');
                 
-                // Animasyon kilidini aç
                 setTimeout(() => {
                     isAnimating = false;
-                }, 1200); /* Çıkma animasyon süresi */
-
-            }, 600); /* Sallanma süresi */
+                }, 1200);
+            }, 600);
         }
     </script>
 </body>
