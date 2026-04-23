@@ -14,20 +14,19 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            /* Arka Plan: Senin gönderdiğin resim1.jpg */
-            background: url('resim1.jpg') center center;
+            /* Önbelleği kırmak için sonuna ?v=2 eklendi */
+            background: url('resim1.jpg?v=2') center center;
             background-size: cover;
             font-family: 'Poppins', sans-serif;
             overflow: hidden;
             position: relative;
         }
 
-        /* Arka planın çok koyu kalmaması için hafif bir katman */
         body::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.4); /* Yazılar okunsun diye hafif karartma */
             z-index: 0;
         }
 
@@ -50,25 +49,23 @@
             z-index: 1;
         }
 
-        /* Kavanoz: Senin gönderdiğin resim2.jpg */
+        /* Önbelleği kırmak için sonuna ?v=2 eklendi */
         .jar-wrapper {
             width: 280px;
             height: 380px;
-            background: url('resim2.jpg') no-repeat center center;
+            background: url('resim2.jpg?v=2') no-repeat center center;
             background-size: contain;
             cursor: pointer;
             position: relative;
             z-index: 10;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            /* Hafif ışıltı efekti */
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
         }
 
         .jar-wrapper:hover {
             transform: scale(1.05);
         }
 
-        /* Mesaj Kağıdı */
         .paper {
             position: absolute;
             bottom: 200px;
@@ -106,7 +103,6 @@
             font-weight: 400;
         }
 
-        /* Animasyonlar */
         .shake {
             animation: jarShake 0.6s ease-in-out;
         }
@@ -132,10 +128,10 @@
 
         .instruction {
             margin-top: 40px;
-            color: #eee;
-            font-size: 1rem;
+            color: #fff;
+            font-size: 1.1rem;
             z-index: 1;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.5);
             padding: 8px 20px;
             border-radius: 30px;
             backdrop-filter: blur(5px);
@@ -154,7 +150,7 @@
         <div class="jar-wrapper" id="jar" onclick="openJar()"></div>
     </div>
 
-    <p class="instruction">Mesaj çekmek için kavanoza dokun</p>
+    <p class="instruction">İçinden bir mesaj çekmek için kavanoza tıkla</p>
 
     <script>
         const messages = [
