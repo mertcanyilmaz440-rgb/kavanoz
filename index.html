@@ -6,7 +6,7 @@
     <title>Ceylin'e Özel Aşk Kavanozu</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        /* 1. Kalpli Arka Plan Teması */
+        /* 1. Belirgin Kalp Temalı Arka Plan */
         body {
             margin: 0;
             padding: 0;
@@ -15,12 +15,14 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            /* Kalp deseni CSS ile oluşturuldu */
             background-color: #fdf2f0;
+            /* Kalp deseni CSS ile daha net oluşturuldu */
             background-image: 
-                radial-gradient(circle at 10px 10px, rgba(231, 76, 60, 0.05) 20px, transparent 0),
-                radial-gradient(circle at 10px 10px, transparent 21px, rgba(231, 76, 60, 0.02) 22px, transparent 23px);
-            background-size: 20px 20px;
+                radial-gradient(circle at 20px 20px, rgba(231, 76, 60, 0.08) 2px, transparent 0),
+                radial-gradient(circle at 20px 20px, transparent 3px, rgba(231, 76, 60, 0.04) 4px, transparent 5px),
+                radial-gradient(circle at 12px 12px, rgba(231, 76, 60, 0.08) 2px, transparent 0);
+            background-size: 30px 30px, 30px 30px, 20px 20px;
+            background-position: 0 0, 0 0, 15px 15px;
             font-family: 'Poppins', sans-serif;
             overflow: hidden;
         }
@@ -28,8 +30,8 @@
         h1 {
             font-family: 'Dancing Script', cursive;
             color: #d63031;
-            font-size: 3rem;
-            margin-bottom: 30px;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
@@ -42,7 +44,7 @@
             align-items: flex-end;
         }
 
-        /* 2. Mantar Kapaklı Yuvarlak Kavanoz Tasarımı */
+        /* 2. Geliştirilmiş, Gerçekçi Kavanoz Tasarımı */
         .jar-wrapper {
             position: relative;
             cursor: pointer;
@@ -51,47 +53,39 @@
         }
 
         .jar-wrapper:hover {
-            transform: scale(1.03);
+            transform: scale(1.05);
         }
 
-        /* Mantar Kapak (Cork Lid) */
+        /* Gerçekçi Mantar Kapak (Cork Lid) */
         .cork-lid {
-            width: 130px;
+            width: 140px;
             height: 35px;
-            background-color: #c9a785; /* Mantar rengi */
+            background-color: #c9a785; /* Mantar dokusu rengi */
+            background-image: 
+                radial-gradient(circle at 10px 10px, rgba(0,0,0,0.1) 1px, transparent 0),
+                radial-gradient(circle at 20px 20px, rgba(0,0,0,0.05) 1px, transparent 0);
+            background-size: 15px 15px;
             border-radius: 5px;
             margin: 0 auto;
             border: 2px solid #a68461;
-            box-shadow: inset 0 5px 10px rgba(0,0,0,0.1);
+            box-shadow: inset 0 5px 10px rgba(255,255,255,0.2), 0 5px 15px rgba(0,0,0,0.2);
             position: relative;
             z-index: 2;
         }
 
-        /* Kapak detayı */
-        .cork-lid::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%;
-            height: 90%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
-        }
-
-        /* Cam Kavanoz Gövdesi (Yuvarlak) */
+        /* Cam Kavanoz Gövdesi (Geliştirilmiş Cam ve Yansımalar) */
         .glass {
-            width: 220px;
-            height: 220px;
-            background: rgba(255, 255, 255, 0.1);
+            width: 230px;
+            height: 230px;
+            background: rgba(255, 255, 255, 0.05); /* Cam şeffaflığı */
             border-radius: 50%; /* Tam yuvarlak */
-            border: 2px solid rgba(255,255,255,0.5);
-            /* Cam gibi görünmesini sağlayan karmaşık gölgeler */
+            border: 1px solid rgba(255,255,255,0.4);
+            /* Cam gibi görünmesini sağlayan daha derin gölgeler */
             box-shadow: 
-                inset -15px 0 30px rgba(0,0,0,0.03), /* Sol gölge */
-                inset 15px 0 30px rgba(255,255,255,0.6), /* Sağ yansıma */
-                inset 0 -20px 20px rgba(0,0,0,0.02), /* Alt gölge */
-                0 20px 40px rgba(0,0,0,0.1); /* Dış gölge */
+                inset -20px 0 30px rgba(0,0,0,0.02), /* Sol gölge */
+                inset 20px 0 35px rgba(255,255,255,0.7), /* Sağ yansıma */
+                inset 0 -25px 25px rgba(0,0,0,0.01), /* Alt gölge */
+                0 25px 45px rgba(0,0,0,0.1); /* Dış gölge */
             position: relative;
             overflow: hidden;
             display: flex;
@@ -100,21 +94,21 @@
             z-index: 1;
         }
 
-        /* Cam yansıması detayı */
+        /* Cam yansıması detayı (Realistik Hafif Parlama) */
         .glass::before {
             content: '';
             position: absolute;
-            top: 10%;
-            left: 10%;
-            width: 30%;
-            height: 50%;
-            background: rgba(255,255,255,0.5);
+            top: 8%;
+            left: 8%;
+            width: 35%;
+            height: 60%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.6), transparent 70%);
             border-radius: 50%;
-            filter: blur(5px);
+            filter: blur(5px); /* Işık parlaması */
             transform: rotate(-10deg);
         }
 
-        /* 3. İçindeki Pembe Kağıtlar (Visible and Floating) */
+        /* 3. İçindeki Pembe Kağıtlar (Temsili, Rulo Efektli) */
         .glass .paper-particles {
             position: absolute;
             width: 100%;
@@ -122,17 +116,16 @@
             pointer-events: none;
         }
 
-        /* Temsili pembe kağıt ruloları */
+        /* Camın içindeki kağıt rulolarını taklit etmek için karakterler */
         .glass .paper-particles::after {
-            content: '✉ ✉ ✉ ✉ ✉ ✉ ✉';
-            font-size: 1.2rem;
-            /* Pembe tonları */
-            color: rgba(231, 76, 60, 0.7); 
+            content: '✉ ✉ ✉ ✉ ✉ ✉ ✉ ✉ ✉';
+            font-size: 1.1rem;
+            color: rgba(231, 76, 60, 0.7); /* Pembe tonları */
             position: absolute;
-            bottom: 20px;
+            bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
-            width: 120%;
+            width: 140%;
             letter-spacing: 12px;
             filter: blur(0.5px);
             animation: papersFloat 6s ease-in-out infinite;
@@ -141,9 +134,10 @@
         /* Kağıtların hafifçe yüzme animasyonu */
         @keyframes papersFloat {
             0%, 100% { transform: translate(-50%, 0px); }
-            50% { transform: translate(-50%, -10px) rotate(2deg); }
+            50% { transform: translate(-50%, -12px) rotate(3deg); }
         }
 
+        /* Geliştirilmiş Etiket (Label) */
         .label {
             position: absolute;
             top: 50%;
@@ -153,7 +147,7 @@
             color: #c0392b;
             font-size: 1.6rem;
             background: rgba(255,255,255,0.9);
-            padding: 5px 15px;
+            padding: 6px 18px;
             border-radius: 12px;
             border: 2px dashed #c0392b;
             box-shadow: 0 5px 10px rgba(0,0,0,0.1);
@@ -162,10 +156,10 @@
         /* Açılan Kağıt Tasarımı */
         .paper {
             position: absolute;
-            bottom: 140px; /* Biraz daha yukarıda */
-            width: 280px;
-            min-height: 160px;
-            background: #fff8e7; /* Eskitilmiş kağıt tonu */
+            bottom: 150px;
+            width: 290px;
+            min-height: 170px;
+            background: #fff8e7;
             border-radius: 8px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
             padding: 25px;
@@ -193,12 +187,12 @@
         }
 
         #message-text {
-            margin-top: 30px;
+            margin-top: 35px;
             line-height: 1.6;
             color: #4a4a4a;
         }
 
-        /* Animasyonlar */
+        /* Animasyonlar (Sallanma ve Çıkma) */
         .shake {
             animation: shake 0.6s ease-in-out;
         }
@@ -219,15 +213,15 @@
         @keyframes popOut {
             0% { opacity: 0; transform: scale(0.1) translateY(120px); }
             60% { opacity: 1; transform: scale(1.1) translateY(-200px); }
-            100% { opacity: 1; transform: scale(1) translateY(-170px); }
+            100% { opacity: 1; transform: scale(1) translateY(-180px); }
         }
 
         .instruction {
-            margin-top: 50px;
+            margin-top: 60px;
             color: #7f8c8d;
-            font-size: 1rem;
+            font-size: 1.1rem;
             background: rgba(255,255,255,0.7);
-            padding: 5px 15px;
+            padding: 6px 20px;
             border-radius: 20px;
         }
     </style>
@@ -306,9 +300,9 @@
                 // Animasyon kilidini aç
                 setTimeout(() => {
                     isAnimating = false;
-                }, 1200);
+                }, 1200); /* Çıkma animasyon süresi */
 
-            }, 600);
+            }, 600); /* Sallanma süresi */
         }
     </script>
 </body>
